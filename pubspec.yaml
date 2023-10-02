@@ -1,0 +1,24 @@
+name: flutter_application_1
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: ">=2.17.3 <3.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  get_cli: ^1.8.1
+  get: 4.6.5
+  loading_animation_widget: ^1.2.0+4
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - assets/img/
+  uses-material-design: true
