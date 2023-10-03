@@ -29,18 +29,20 @@ class ListDay extends GetView<HomeController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'Hari Ini',
+                    'Tanggal',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),
                   ),
-                  Text(
-                    substring(controller.weatherDay.value.jamCuaca!, 0, 10),
-                    style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 18,
+                  Obx(
+                    () => Text(
+                      substring(controller.weatherDay.value.jamCuaca!, 0, 10),
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ],

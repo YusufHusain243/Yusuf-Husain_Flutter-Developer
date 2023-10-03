@@ -167,18 +167,15 @@ class HomeView extends GetView<HomeController> {
                           ),
                         )
                       ],
-                      const SizedBox(
-                        height: 30,
-                      ),
+                      const SizedBox(height: 30),
                       Image.asset(
                         controller.weatherDay.value.cuaca!.isEmpty
                             ? 'assets/img/1.png'
                             : 'assets/img/2.png',
                         width: 200,
+                        height: 200,
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 30),
                       Text(
                         "${controller.weatherDay.value.tempC}°C",
                         style: const TextStyle(

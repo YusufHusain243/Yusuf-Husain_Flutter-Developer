@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_application_1/app/data/models/weather_day_model.dart';
 import 'package:flutter_application_1/app/data/models/weather_model.dart';
 import 'package:flutter_application_1/app/providers/weather_provider.dart';
@@ -19,7 +21,7 @@ class HomeController extends GetxController with StateMixin<Map> {
   @override
   void onInit() {
     super.onInit();
-    getById(501192);
+    getById(501397);
     get();
   }
 
@@ -34,8 +36,7 @@ class HomeController extends GetxController with StateMixin<Map> {
   }
 
   void changeWeatherDay(int index) {
-    weatherDay.value = listWeatherDay.value[index];
-    update();
+    weatherDay.value = listWeatherDay[index];
     indexSelectedCard.value = index;
     update();
   }
@@ -60,6 +61,7 @@ class HomeController extends GetxController with StateMixin<Map> {
           List jsonResponse = response.body;
           weather.value =
               jsonResponse.map((weather) => Weather.fromJson(weather)).toList();
+          setKecamatan(weather[0].kota!, weather[0].kecamatan!);
           loading(false);
         } else {
           return null;
@@ -70,7 +72,7 @@ class HomeController extends GetxController with StateMixin<Map> {
     }
   }
 
-  Future<void> getById(int id) async {
+  void getById(int id) async {
     try {
       loading(true);
       await WeatherProvider().getDataWeatherById(id).then((response) {
@@ -79,8 +81,8 @@ class HomeController extends GetxController with StateMixin<Map> {
           listWeatherDay.value = jsonResponse
               .map((weatherDay) => WeatherDay.fromJson(weatherDay))
               .toList();
-          loading(false);
           changeWeatherDay(0);
+          loading(false);
         } else {
           return null;
         }
